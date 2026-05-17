@@ -4,6 +4,27 @@ import { collection, doc, setDoc, getDocs, deleteDoc } from 'firebase/firestore'
 import { db, auth } from '../services/firebase';
 import { signInAnonymously } from 'firebase/auth';
 
+console.log("[Startup] Zustand initialized.");
+
+// Helper to wrap a promise in a timeout
+const withTimeout = (promise, ms) => {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error(`Timeout after ${ms}ms`));
+    }, ms);
+    promise.then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (error) => {
+        clearTimeout(timer);
+        reject(error);
+      }
+    );
+  });
+};
+
 const useAppStore = create(
   persist(
     (set, get) => ({
@@ -36,9 +57,21 @@ const useAppStore = create(
       
       // Load contacts from Firestore if available
       syncContactsFromFirebase: async () => {
+        console.log("[Startup] syncContactsFromFirebase started");
         try {
-          if (!auth || !db) return;
-          if (!auth.currentUser) await signInAnonymously(auth);
+          if (!auth || !db) {
+            console.log("[Startup] Firebase auth or db not available, using offline/local mode.");
+            return;
+          }
+          
+          if (!auth.currentUser) {
+            console.log("[Startup] Resolving auth state anonymously...");
+            // Use 5 second timeout to prevent infinite hanging
+            await withTimeout(signInAnonymously(auth), 5000);
+            console.log("[Startup] Auth state resolved anonymously.");
+          } else {
+            console.log("[Startup] Auth already resolved, user is anonymous:", auth.currentUser.uid);
+          }
           
           const uid = auth.currentUser.uid;
           const contactsRef = collection(db, `users/${uid}/contacts`);
