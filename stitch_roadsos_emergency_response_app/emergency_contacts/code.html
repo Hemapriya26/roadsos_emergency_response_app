@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emergency Contacts - ROADSoS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fbf9f9",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-dim": "#dbdad9",
+                        "primary-container": "#d32f2f",
+                        "on-primary-container": "#fff2f0",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container-high": "#e9e8e7",
+                        "tertiary": "#565858",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-surface-variant": "#5b403d",
+                        "on-secondary": "#ffffff",
+                        "outline": "#8f6f6c",
+                        "surface": "#fbf9f9",
+                        "primary-fixed-dim": "#ffb3ac",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f2f0f0",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-primary-fixed": "#410003",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e3e2e2",
+                        "secondary": "#5f5e5e",
+                        "inverse-surface": "#303031",
+                        "tertiary-container": "#6e7070",
+                        "on-tertiary-container": "#f4f4f4",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#e4beba",
+                        "surface-container": "#efeded",
+                        "primary-fixed": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "secondary-container": "#e5e2e1",
+                        "inverse-primary": "#ffb3ac",
+                        "primary": "#af101a",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#474646",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#930010",
+                        "on-secondary-container": "#656464",
+                        "surface-tint": "#ba1a20",
+                        "background": "#fbf9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "20px",
+                        "safe-bottom-zone": "80px",
+                        "baseline": "8px",
+                        "touch-target-min": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Public Sans"],
+                        "label-xl": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "headline-xl": ["Public Sans"],
+                        "label-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-xl": ["16px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "headline-xl": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "18px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pt-[64px] pb-safe-bottom-zone md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-[64px] bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden flex items-center justify-center">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a user in a professional setting, softly lit with a modern light-mode aesthetic, relying on deep blacks and pristine whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1PKtWPE4qqt5fJlfhfxdxuqVybF2tPs4kYUllGKqyLlSfgGDr9--LoPjOZTssJspPVmbfE9sjIWygYO7ZTpnu693jj0XJzl98nel3ZI1w-hhsZVeWINo34Pq5e1AUAL6d1M8LpsrWionKyGKTfdY8dQrW7TOr-5a5HDOe94Bk7cKYNwU6u_MXHx2BauAMko4fbyxhz9W6ecdERfIy1L-Jstps9B-BaORwt4HLFEDE336Hjfzkjh6JEE0lqouUakdXoSgFzrGYG7U"/>
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-black tracking-tighter text-primary dark:text-primary-fixed-dim">ROADSoS</span>
+</div>
+<button aria-label="Emergency Home" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container-high/50 dark:hover:bg-surface-container-highest/50 transition-colors duration-200 ease-in-out text-primary dark:text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">emergency_home</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile py-baseline flex flex-col gap-baseline max-w-2xl mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-4">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-2">Emergency Contacts</h1>
+<p class="font-body-lg text-body-lg text-secondary">Manage who gets notified in an emergency.</p>
+</div>
+<!-- Notify All Action (High Priority) -->
+<button class="w-full bg-primary text-on-primary rounded-xl py-4 px-6 flex items-center justify-center gap-3 shadow-[0_8px_24px_rgba(175,16,26,0.15)] hover:bg-surface-tint active:scale-95 transition-all duration-200 min-h-touch-target-min mb-6 relative overflow-hidden group">
+<div class="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-xl opacity-0 group-hover:opacity-100"></div>
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<span class="font-label-xl text-label-xl">Notify All Contacts Now</span>
+</button>
+<!-- Preview SMS Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-6 shadow-[0_4px_12px_rgba(0,0,0,0.05)] mb-6 flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">sms</span>
+<h2 class="font-label-xl text-label-xl text-on-surface">Emergency Message Preview</h2>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg relative">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    "EMERGENCY: User needs urgent roadside assistance. Current location: [GPS Link]. Please try calling. Vehicle details attached."
+                </p>
+<!-- Simulated Map Location -->
+<div class="mt-3 h-24 rounded-md overflow-hidden relative bg-surface-container">
+<img alt="Map preview" class="w-full h-full object-cover opacity-80" data-alt="A stylized, modern digital map interface displaying a simplified street layout in high-key, soft white lighting. The map uses a minimalist palette of deep blacks, pristine whites, and light grays, punctuated by a single intense red pulsing dot indicating an active GPS location. The overall aesthetic is clean, technological, and functional." data-location="Los Angeles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBazlWqfFNsSBw9rFym4hGrGCkrJzro3ZTQJ8f7Cn2qvd_d01Prf-BqaXA58Ga334-3jn8z4XiENusht7f6wFtV9GjtsSFEaY40sPG46JvRAKF7zhg0vC088OXegr8vWdLX4X6vBxWrHBvs7ijWqeWAOIgByWvO0mM4Cmb6uU_UlcSWQElyGLZsquHiEFzd_nBN9q1EqD9AI3HOpOG-mdX_jWoMgIkOmm3kkycnVIYQgix4LJ3pRFY99UVrA7jNTw-p7sJaJNfWqls"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 self-start hover:underline">
+<span class="material-symbols-outlined text-sm">edit</span>
+                Edit Default Message
+            </button>
+</div>
+<!-- Contacts List Header -->
+<div class="flex justify-between items-center mb-2">
+<h2 class="font-label-xl text-label-xl text-on-surface">Trusted Contacts</h2>
+<button class="bg-secondary-container text-on-secondary-container hover:bg-surface-variant rounded-full px-4 py-2 flex items-center gap-2 transition-colors min-h-touch-target-min">
+<span class="material-symbols-outlined text-sm">add</span>
+<span class="font-label-md text-label-md">Add New</span>
+</button>
+</div>
+<!-- Contacts List (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+<!-- Contact Card 1 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center justify-between min-h-touch-target-min relative group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-headline-lg">
+                        M
+                    </div>
+<div>
+<h3 class="font-label-xl text-label-xl text-on-surface">Mom</h3>
+<p class="font-body-md text-body-md text-secondary">+1 (555) 123-4567</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Edit Contact" class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button aria-label="Delete Contact" class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<!-- Contact Card 2 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center justify-between min-h-touch-target-min relative group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-headline-lg">
+                        D
+                    </div>
+<div>
+<h3 class="font-label-xl text-label-xl text-on-surface">Dad</h3>
+<p class="font-body-md text-body-md text-secondary">+1 (555) 987-6543</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Edit Contact" class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button aria-label="Delete Contact" class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<!-- Contact Card 3 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center justify-between min-h-touch-target-min relative group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-headline-lg">
+                        S
+                    </div>
+<div>
+<h3 class="font-label-xl text-label-xl text-on-surface">Sarah (Spouse)</h3>
+<p class="font-body-md text-body-md text-secondary">+1 (555) 555-0199</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Edit Contact" class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button aria-label="Delete Contact" class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe-bottom-zone md:hidden bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-xl border-t border-outline-variant/30 dark:border-outline/20 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-5 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-5 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">notifications</span>
+<span class="font-label-md text-label-md">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed text-on-primary-container dark:text-on-primary-fixed rounded-full px-5 py-1 active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md">Contacts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-5 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</body></html>

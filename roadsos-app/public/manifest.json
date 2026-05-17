@@ -1,0 +1,24 @@
+{
+  "name": "ROADSoS - Emergency & Roadside Response",
+  "short_name": "ROADSoS",
+  "description": "Premium real-time emergency responder & roadside assistance platform.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fef7f7",
+  "theme_color": "#ba1a1a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

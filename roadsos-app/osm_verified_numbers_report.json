@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Los Angeles Community Hospital",
+    "type": "🏥 Hospital",
+    "phone": "+1 323 267 0477",
+    "address": "4081, East Olympic Boulevard, Los Angeles, 90023",
+    "website": "https://www.lach-la.com/",
+    "osmUrl": "https://www.openstreetmap.org/node/358826153"
+  },
+  {
+    "name": "Kedren Community Health Center",
+    "type": "🏥 Hospital",
+    "phone": "+1 323 233 0425",
+    "address": "4211, South Avalon Boulevard, Los Angeles, 90011",
+    "website": "https://kedren.org/",
+    "osmUrl": "https://www.openstreetmap.org/node/2556689683"
+  },
+  {
+    "name": "Joshua House Health Center",
+    "type": "🏥 Hospital",
+    "phone": "+1-213-893-1960",
+    "address": "325, East 7th Street, Los Angeles, 90014",
+    "website": "N/A",
+    "osmUrl": "https://www.openstreetmap.org/node/9211554934"
+  },
+  {
+    "name": "Kaiser Foundation Hospital Mental Health Center",
+    "type": "🏥 Hospital",
+    "phone": "+1 213 580 7200",
+    "address": "765, West College Street, Los Angeles, 90012-1181",
+    "website": "https://healthy.kaiserpermanente.org/southern-california/facilities/mental-health-center-100121",
+    "osmUrl": "https://www.openstreetmap.org/node/10866447068"
+  },
+  {
+    "name": "Los Angeles General Medical Center",
+    "type": "🏥 Hospital",
+    "phone": "+1-323-409-1000",
+    "address": "2051, Marengo Street, Los Angeles, 90033",
+    "website": "https://dhs.lacounty.gov/lageneral/",
+    "osmUrl": "https://www.openstreetmap.org/way/172998715"
+  },
+  {
+    "name": "White Memorial Medical Center",
+    "type": "🏥 Hospital",
+    "phone": "+1 323 268 5000",
+    "address": "1720, East Cesar E Chavez Avenue, Los Angeles, 90033",
+    "website": "https://www.adventisthealth.org/white-memorial/",
+    "osmUrl": "https://www.openstreetmap.org/way/203432884"
+  },
+  {
+    "name": "East Los Angeles County Sheriff's Patrol Station",
+    "type": "👮 Police Station",
+    "phone": "+1-323-264-4151",
+    "address": "5019, East 3rd Street, Los Angeles, 90022",
+    "website": "https://lasd.org/east-los-angeles/",
+    "osmUrl": "https://www.openstreetmap.org/way/205730319"
+  },
+  {
+    "name": "California Highway Patrol",
+    "type": "👮 Police Station",
+    "phone": "+1 213 7442331",
+    "address": "777 W Washington Boulevard",
+    "website": "N/A",
+    "osmUrl": "https://www.openstreetmap.org/way/246709767"
+  },
+  {
+    "name": "CHA Hollywood Presbyterian Medical Center",
+    "type": "🏥 Hospital",
+    "phone": "+1 213 413 3000",
+    "address": "1300, North Vermont Avenue, Los Angeles, 90029",
+    "website": "https://www.hollywoodpresbyterian.com/",
+    "osmUrl": "https://www.openstreetmap.org/way/299402562"
+  },
+  {
+    "name": "Children's Hospital Los Angeles",
+    "type": "🏥 Hospital",
+    "phone": "+1 323 660 2450",
+    "address": "4650, Sunset Boulevard, Los Angeles, 90029",
+    "website": "https://www.chla.org/",
+    "osmUrl": "https://www.openstreetmap.org/way/299402563"
+  },
+  {
+    "name": "Good Samaritan Hospital",
+    "type": "🏥 Hospital",
+    "phone": "+1 213 977 2121",
+    "address": "1225, Wilshire Boulevard, Los Angeles, 90017",
+    "website": "https://www.goodsam.org/",
+    "osmUrl": "https://www.openstreetmap.org/way/398272919"
+  },
+  {
+    "name": "Northeast Community Police Station",
+    "type": "👮 Police Station",
+    "phone": "+1-323-561-3211",
+    "address": "3353, San Fernando Rd, Los Angeles, 90065",
+    "website": "N/A",
+    "osmUrl": "https://www.openstreetmap.org/way/427532706"
+  },
+  {
+    "name": "Kaiser Permanente Los Angeles Medical Center",
+    "type": "🏥 Hospital",
+    "phone": "+1 323 783 4011",
+    "address": "4867, Sunset Boulevard, Los Angeles, 90027",
+    "website": "https://thrive.kaiserpermanente.org/care-near-you/southern-california/los-angeles/locations/los-angeles-medical-center/",
+    "osmUrl": "https://www.openstreetmap.org/way/442117665"
+  },
+  {
+    "name": "Community Hospital of Huntington Park",
+    "type": "🏥 Hospital",
+    "phone": "+1 323 583 1931",
+    "address": "2623, East Slauson Avenue, Huntington Park, 90255",
+    "website": "https://chhp.avantihospitals.com/",
+    "osmUrl": "https://www.openstreetmap.org/way/464183836"
+  },
+  {
+    "name": "Alhambra Hospital Medical Center",
+    "type": "🏥 Hospital",
+    "phone": "+1 626-570-1606",
+    "address": "100, South Raymond Avenue, Alhambra, 91801",
+    "website": "https://www.alhambrahospital.com/",
+    "osmUrl": "https://www.openstreetmap.org/way/572047613"
+  },
+  {
+    "name": "Monterey Park Hospital",
+    "type": "🏥 Hospital",
+    "phone": "+1 626-570-9000",
+    "address": "900, South Atlantic Boulevard, Monterey Park, 91754",
+    "website": "https://www.ahmchealth.com/mph/",
+    "osmUrl": "https://www.openstreetmap.org/way/572083309"
+  },
+  {
+    "name": "Southern California Hospital Hollywood",
+    "type": "🏥 Hospital",
+    "phone": "+1 323 462 2271",
+    "address": "6245, De Longpre Avenue, Los Angeles, 90028",
+    "website": "https://www.sch-hollywood.com/",
+    "osmUrl": "https://www.openstreetmap.org/way/574228538"
+  },
+  {
+    "name": "California Hospital Medical Center",
+    "type": "🏥 Hospital",
+    "phone": "+1 213 748 2411",
+    "address": "1401, South Grand Avenue, Los Angeles, 90007",
+    "website": "https://www.dignityhealth.org/socal/locations/californiahospital",
+    "osmUrl": "https://www.openstreetmap.org/way/574464500"
+  },
+  {
+    "name": "Saint Vincent Medical Center",
+    "type": "🏥 Hospital",
+    "phone": "+1 213 484 7111",
+    "address": "2131, West 3rd Street, Los Angeles, 90057",
+    "website": "https://stvincent.verity.org/",
+    "osmUrl": "https://www.openstreetmap.org/way/574480663"
+  },
+  {
+    "name": "Silver Lake Medical Center",
+    "type": "🏥 Hospital",
+    "phone": "+1 213 989 6100",
+    "address": "1711, West Temple Street, Los Angeles, 90026",
+    "website": "https://www.silverlakemc.com/",
+    "osmUrl": "https://www.openstreetmap.org/way/574492275"
+  },
+  {
+    "name": "Gateways Hospital",
+    "type": "🏥 Hospital",
+    "phone": "+1 323 644 2000",
+    "address": "1891, Effie Street, Los Angeles, 90026",
+    "website": "https://www.gatewayshospital.org/",
+    "osmUrl": "https://www.openstreetmap.org/way/574583421"
+  },
+  {
+    "name": "Keck Hospital of USC",
+    "type": "🏥 Hospital",
+    "phone": "+1 800 872 2273",
+    "address": "1500, San Pablo Street, Los Angeles, 90033",
+    "website": "https://www.keckmedicine.org/about-keck-medicine/keck-hospital-of-usc/",
+    "osmUrl": "https://www.openstreetmap.org/way/574903704"
+  },
+  {
+    "name": "Glendale Memorial Hospital",
+    "type": "🏥 Hospital",
+    "phone": "+1 818 502 1900",
+    "address": "1420, South Central Avenue, Glendale, 91204",
+    "website": "https://www.dignityhealth.org/socal/locations/glendalememorial",
+    "osmUrl": "https://www.openstreetmap.org/way/575583532"
+  },
+  {
+    "name": "East Los Angeles Doctors Hospital",
+    "type": "🏥 Hospital",
+    "phone": "+1 323 268 5514",
+    "address": "4060, Whittier Boulevard, Los Angeles, 90023",
+    "website": "https://eladh.avantihospitals.com/",
+    "osmUrl": "https://www.openstreetmap.org/way/587066427"
+  },
+  {
+    "name": "Barlow Respiratory Hospital",
+    "type": "🏥 Hospital",
+    "phone": "+1 213 250 4200",
+    "address": "2000, Stadium Way, Los Angeles, 90026",
+    "website": "https://www.barlowhospital.org/",
+    "osmUrl": "https://www.openstreetmap.org/way/951238266"
+  }
+]

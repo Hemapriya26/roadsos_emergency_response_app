@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Nearby Emergency Services - ROADSoS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fbf9f9",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-dim": "#dbdad9",
+                        "primary-container": "#d32f2f",
+                        "on-primary-container": "#fff2f0",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container-high": "#e9e8e7",
+                        "tertiary": "#565858",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-surface-variant": "#5b403d",
+                        "on-secondary": "#ffffff",
+                        "outline": "#8f6f6c",
+                        "surface": "#fbf9f9",
+                        "primary-fixed-dim": "#ffb3ac",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f2f0f0",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-primary-fixed": "#410003",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e3e2e2",
+                        "secondary": "#5f5e5e",
+                        "inverse-surface": "#303031",
+                        "tertiary-container": "#6e7070",
+                        "on-tertiary-container": "#f4f4f4",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#e4beba",
+                        "surface-container": "#efeded",
+                        "primary-fixed": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "secondary-container": "#e5e2e1",
+                        "inverse-primary": "#ffb3ac",
+                        "primary": "#af101a",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#474646",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#930010",
+                        "on-secondary-container": "#656464",
+                        "surface-tint": "#ba1a20",
+                        "background": "#fbf9f9"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "margin-mobile": "20px",
+                        "safe-bottom-zone": "80px",
+                        "baseline": "8px",
+                        "touch-target-min": "48px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Public Sans"],
+                        "label-xl": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "headline-xl": ["Public Sans"],
+                        "label-md": ["Public Sans"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "label-xl": ["16px", { lineHeight: "20px", fontWeight: "600" }],
+                        "headline-lg-mobile": ["22px", { lineHeight: "28px", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "26px", fontWeight: "400" }],
+                        "headline-xl": ["34px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "label-md": ["14px", { lineHeight: "18px", fontWeight: "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-[64px] bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm dark:shadow-none transition-colors duration-200 ease-in-out">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up studio portrait of a professional individual against a clean, minimal light grey background. The lighting is bright and even, casting soft shadows and highlighting a calm, composed expression. The aesthetic is modern and sterile, fitting a high-tech utility application. The color palette is neutral with high contrast, aligning with a professional light-mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG3CKSRn2qwF8C5Em8bqfYtRLWk0ZqHPQQrvea7_-ozqq1iLeE46zsvBP1IBKs-pTMRxRN7YSywtD61WnlcQpGTPh_wEd-F1WkOvb0Uq2dhgbgfZYPEJmCbwLKTcdgjaQGfqEqGXIH97QLgJFEVBKOjkdfAtplF_zqvvE7dTkDSsxmYIhEXL8taoQepisaOaxdzpmNRb5cOnFJqXsQj7hanQ7UiBirJTdV0UNq30YESzpkTNnYmj8DiFdKDJ73mE-18vRciDoIEoc"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-black tracking-tighter text-primary dark:text-primary-fixed-dim">ROADSoS</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high/50 dark:hover:bg-surface-container-highest/50 transition-colors duration-200 ease-in-out text-primary dark:text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow pt-[80px] pb-[100px] md:pb-[40px] px-margin-mobile w-full max-w-2xl mx-auto flex flex-col gap-gutter">
+<!-- Header & Toggle -->
+<div class="flex flex-col gap-4 mb-2">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Nearby Services</h2>
+<!-- Segmented Control -->
+<div class="bg-surface-container-high rounded-full p-1 flex items-center w-full relative">
+<button class="flex-1 flex items-center justify-center py-2.5 rounded-full bg-surface-container-lowest shadow-sm text-on-surface font-label-md text-label-md transition-all z-10">
+<span class="material-symbols-outlined mr-2 text-[18px]">format_list_bulleted</span>
+                    List
+                </button>
+<button class="flex-1 flex items-center justify-center py-2.5 rounded-full text-secondary hover:text-on-surface font-label-md text-label-md transition-all z-10">
+<span class="material-symbols-outlined mr-2 text-[18px]">map</span>
+                    Map
+                </button>
+</div>
+</div>
+<!-- Horizontal Filter Chips -->
+<div class="flex overflow-x-auto hide-scrollbar gap-2 pb-2 -mx-margin-mobile px-margin-mobile">
+<button class="flex-shrink-0 bg-primary-container text-on-primary-container px-5 py-2 rounded-full font-label-md text-label-md transition-colors">
+                All
+            </button>
+<button class="flex-shrink-0 bg-surface-container-lowest border border-outline-variant/50 text-secondary px-5 py-2 rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+                Hospitals
+            </button>
+<button class="flex-shrink-0 bg-surface-container-lowest border border-outline-variant/50 text-secondary px-5 py-2 rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+                Police
+            </button>
+<button class="flex-shrink-0 bg-surface-container-lowest border border-outline-variant/50 text-secondary px-5 py-2 rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+                Tow &amp; Rescue
+            </button>
+</div>
+<!-- Service Cards List -->
+<div class="flex flex-col gap-4 mt-2">
+<!-- Hospital Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex gap-3 items-center">
+<div class="w-12 h-12 rounded-full bg-error-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">local_hospital</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-label-xl text-label-xl text-on-surface">City General Hospital</h3>
+<span class="font-body-md text-body-md text-secondary">Trauma Center Level 1</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-xl text-label-xl text-on-surface">1.2 km</span>
+<span class="font-label-md text-label-md text-primary bg-primary-fixed px-2 py-0.5 rounded-full mt-1">Open 24/7</span>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 flex items-center justify-center gap-2 border-2 border-outline-variant/50 text-on-surface hover:bg-surface-container-high rounded-full h-[48px] font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">call</span>
+                        Call Desk
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary text-on-primary hover:bg-surface-tint rounded-full h-[48px] font-label-md text-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">directions</span>
+                        Navigate
+                    </button>
+</div>
+</div>
+<!-- Police Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex gap-3 items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">local_police</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-label-xl text-label-xl text-on-surface">Metro Police Precinct 4</h3>
+<span class="font-body-md text-body-md text-secondary">Highway Patrol Base</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-xl text-label-xl text-on-surface">3.5 km</span>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 flex items-center justify-center gap-2 border-2 border-outline-variant/50 text-on-surface hover:bg-surface-container-high rounded-full h-[48px] font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">call</span>
+                        Dispatch
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary text-on-primary hover:bg-surface-tint rounded-full h-[48px] font-label-md text-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">directions</span>
+                        Navigate
+                    </button>
+</div>
+</div>
+<!-- Rescue/Tow Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex gap-3 items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">rv_hookup</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-label-xl text-label-xl text-on-surface">Rapid Response Towing</h3>
+<span class="font-body-md text-body-md text-secondary">Heavy Duty Recovery</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-xl text-label-xl text-on-surface">5.1 km</span>
+<span class="font-label-md text-label-md text-secondary bg-surface-container-highest px-2 py-0.5 rounded-full mt-1">Est. 15m</span>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 flex items-center justify-center gap-2 border-2 border-outline-variant/50 text-on-surface hover:bg-surface-container-high rounded-full h-[48px] font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">call</span>
+                        Contact
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary text-on-primary hover:bg-surface-tint rounded-full h-[48px] font-label-md text-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">directions</span>
+                        Navigate
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe-bottom-zone bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-xl rounded-t-xl md:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.05)] border-t border-outline-variant/30 dark:border-outline/20">
+<!-- Dashboard (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed text-on-primary-container dark:text-on-primary-fixed rounded-full px-5 py-1 active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md mt-1">Dashboard</span>
+</button>
+<!-- Alerts -->
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-5 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-md text-label-md mt-1">Alerts</span>
+</button>
+<!-- Contacts -->
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-5 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md mt-1">Contacts</span>
+</button>
+<!-- Settings -->
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-5 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md mt-1">Settings</span>
+</button>
+</nav>
+</body></html>

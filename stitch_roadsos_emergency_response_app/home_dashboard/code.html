@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROADSoS - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "surface-bright": "#fbf9f9",
+                      "on-surface": "#1b1c1c",
+                      "surface-container-highest": "#e3e2e2",
+                      "surface-dim": "#dbdad9",
+                      "primary-container": "#d32f2f",
+                      "on-primary-container": "#fff2f0",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-low": "#f5f3f3",
+                      "surface-container-high": "#e9e8e7",
+                      "tertiary": "#565858",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-surface-variant": "#5b403d",
+                      "on-secondary": "#ffffff",
+                      "outline": "#8f6f6c",
+                      "surface": "#fbf9f9",
+                      "primary-fixed-dim": "#ffb3ac",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#f2f0f0",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "on-primary-fixed": "#410003",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e3e2e2",
+                      "secondary": "#5f5e5e",
+                      "inverse-surface": "#303031",
+                      "tertiary-container": "#6e7070",
+                      "on-tertiary-container": "#f4f4f4",
+                      "on-error": "#ffffff",
+                      "on-background": "#1b1c1c",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#e4beba",
+                      "surface-container": "#efeded",
+                      "primary-fixed": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "secondary-container": "#e5e2e1",
+                      "inverse-primary": "#ffb3ac",
+                      "primary": "#af101a",
+                      "on-error-container": "#93000a",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#474646",
+                      "secondary-fixed": "#e5e2e1",
+                      "on-primary-fixed-variant": "#930010",
+                      "on-secondary-container": "#656464",
+                      "surface-tint": "#ba1a20",
+                      "background": "#fbf9f9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "margin-mobile": "20px",
+                      "safe-bottom-zone": "80px",
+                      "baseline": "8px",
+                      "touch-target-min": "48px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Public Sans"
+                      ],
+                      "label-xl": [
+                              "Public Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Public Sans"
+                      ],
+                      "body-md": [
+                              "Public Sans"
+                      ],
+                      "body-lg": [
+                              "Public Sans"
+                      ],
+                      "headline-xl": [
+                              "Public Sans"
+                      ],
+                      "label-md": [
+                              "Public Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-xl": [
+                              "16px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "34px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface h-screen w-screen overflow-hidden flex flex-col relative selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-[64px] bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest flex items-center justify-center">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a professional driver, shot with soft, neutral lighting against a clean, minimal background. The aesthetic is modern and high-contrast, fitting a professional institutional app. The subject looks reliable and composed, reflecting a calm demeanor in high-stress situations." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW9kfx_SyAC5c75dQN6UFCInMFwo-fli3asj74qNNckLuRlZPIwy4C9Mzm5eE-JfzgKnYSgOJhXekEFjOdSRFcCB3qKg1WRVjQlLP3393ZBxcOTDa-qaIWDjmWsr1LO7OF2d1-BrE2ckDnW6Lf48jz8I44EvDsbFS15294Z_HlOx2uofRNnl1SqCxylo2ROo6mnU__ZXv4nW5ytpB5jzlTxY6J6goM9-z3bCy21Q15sCnl_lG2fVKV5DqsahOZ9UTAc_CThXtTJCs"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-black tracking-tighter text-primary dark:text-primary-fixed-dim">ROADSoS</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">GPS Active</span>
+</div>
+</div>
+</div>
+<button class="w-touch-target-min h-touch-target-min flex items-center justify-center rounded-full text-primary dark:text-primary-fixed-dim hover:bg-surface-container-high/50 dark:hover:bg-surface-container-highest/50 transition-colors duration-200 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+</button>
+</header>
+<!-- Map Canvas Area -->
+<main class="flex-grow relative z-0 mt-[64px] mb-[80px]">
+<!-- Full Screen Map Background -->
+<div class="absolute inset-0 w-full h-full bg-surface-container-low" data-alt="A top-down view of a modern digital map interface displaying city streets with high contrast. The map uses a minimalist, light-mode palette of soft grays and whites, punctuated by stark white roads. It embodies a clean, institutional utility style, devoid of unnecessary clutter, focusing purely on navigational clarity and absolute reliability." data-location="Los Angeles" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJDSC4o0iatiU9hpmK85eCLFBcPrqNS7EcYvxKNGGdhZxyzBzuu6gLp5jMF5MC484r0JdaP_Gxh5law3m81-xkpmOxxSaEXHhVDwi_rb4CFXHNSb05tkPJNv-y12U06HTbTong4zKd_COTv91QyDQBznNmFYzAVNYTv6h15X4leb7PZOeGZUol6zzKA7n316xuTzcjyTatibjUP_h-_pPX4N016Gi2e4ZwR5sxEQpFqocP-D1hvddZ1gGgbGeMyFlG1qJ70_sRUvY'); background-size: cover; background-position: center;">
+<!-- Overlay to ensure text readability -->
+<div class="absolute inset-0 bg-surface/10 backdrop-blur-[2px]"></div>
+</div>
+<!-- Service Pins (Decorative) -->
+<div class="absolute top-[20%] left-[30%] flex items-center justify-center w-8 h-8 rounded-full bg-surface shadow-md border border-outline-variant/30 text-primary">
+<span class="material-symbols-outlined text-[18px]">local_hospital</span>
+</div>
+<div class="absolute top-[45%] right-[20%] flex items-center justify-center w-8 h-8 rounded-full bg-surface shadow-md border border-outline-variant/30 text-secondary">
+<span class="material-symbols-outlined text-[18px]">local_police</span>
+</div>
+<div class="absolute top-[60%] left-[15%] flex items-center justify-center w-8 h-8 rounded-full bg-surface shadow-md border border-outline-variant/30 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">car_repair</span>
+</div>
+<!-- User Location Pin -->
+<div class="absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12">
+<div class="absolute w-full h-full rounded-full bg-primary/20 animate-ping"></div>
+<div class="w-4 h-4 rounded-full bg-primary border-2 border-surface shadow-lg z-10"></div>
+</div>
+<!-- Thumb Zone Controls -->
+<div class="absolute bottom-6 left-0 w-full px-margin-mobile flex flex-col gap-6 items-center">
+<!-- Primary SOS Trigger -->
+<button class="relative group outline-none focus:outline-none">
+<!-- Ripple Effects -->
+<div class="absolute inset-0 rounded-full bg-primary/10 scale-150 animate-pulse"></div>
+<div class="absolute inset-0 rounded-full bg-primary/20 scale-125 animate-pulse delay-75"></div>
+<!-- Main Button -->
+<div class="relative w-[120px] h-[120px] bg-primary rounded-full flex flex-col items-center justify-center shadow-[0_8px_24px_rgba(175,16,26,0.25)] border-4 border-surface active:scale-95 transition-transform duration-200 z-10">
+<span class="font-headline-xl text-headline-xl text-on-primary">SOS</span>
+<span class="font-label-md text-label-md text-on-primary/80 mt-1 uppercase tracking-widest text-[10px]">Hold</span>
+</div>
+</button>
+<!-- Quick Action Bento -->
+<div class="w-full grid grid-cols-3 gap-3 bg-surface/90 backdrop-blur-md p-3 rounded-2xl shadow-sm border border-outline-variant/30">
+<button class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-surface-container transition-colors active:bg-surface-container-high">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">ambulance</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-[12px]">Medical</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-surface-container transition-colors active:bg-surface-container-high">
+<div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_police</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-[12px]">Police</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-surface-container transition-colors active:bg-surface-container-high">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">car_repair</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-[12px]">Tow</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe-bottom-zone bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-xl rounded-t-xl border-t border-outline-variant/30 dark:border-outline/20 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:hidden">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed text-on-primary-container dark:text-on-primary-fixed rounded-full px-5 py-1 active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined mb-0.5" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-5 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined mb-0.5">notifications</span>
+<span class="font-label-md text-label-md text-[10px]">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-5 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined mb-0.5">group</span>
+<span class="font-label-md text-label-md text-[10px]">Contacts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-5 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined mb-0.5">settings</span>
+<span class="font-label-md text-label-md text-[10px]">Settings</span>
+</a>
+</nav>
+</body></html>
