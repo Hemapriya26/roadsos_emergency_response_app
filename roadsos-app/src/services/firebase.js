@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "[GCP_API_KEY]",
+  apiKey: "AIzaSyDNFf6M56k1wAY_g54ZU936kQMvcaQFevU",
   authDomain: "roadsos-fc103.firebaseapp.com",
   projectId: "roadsos-fc103",
   storageBucket: "roadsos-fc103.firebasestorage.app",
