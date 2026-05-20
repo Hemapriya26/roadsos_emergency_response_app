@@ -11,18 +11,20 @@ const NearbyServices = () => {
   const { nearbyServices, updateServicePhone } = useAppStore();
 
   useEffect(() => {
-    // For each service loaded that doesn't have a phone, scrape/resolve it in the background
+    // Only scrape for services missing a phone — skip high-confidence OSM numbers
     nearbyServices.forEach(async (service) => {
-      if (!service.phone) {
-        try {
-          const res = await fetch(`/.netlify/functions/fetch-phone?name=${encodeURIComponent(service.name)}&website=${encodeURIComponent(service.website || '')}`);
-          const data = await res.json();
-          if (data && data.phone) {
-            updateServicePhone(service.id, data.phone);
-          }
-        } catch (err) {
-          console.error(`Error scraping phone for ${service.name}:`, err);
+      if (service.phoneConfidence === 'high') return; // Already verified from OSM
+      if (service.phone && service.phoneConfidence !== 'low') return; // Already resolved with medium+ confidence
+      try {
+        const res = await fetch(
+          `/.netlify/functions/fetch-phone?name=${encodeURIComponent(service.name)}&website=${encodeURIComponent(service.website || '')}&type=${encodeURIComponent(service.type || '')}`
+        );
+        const data = await res.json();
+        if (data && data.phone) {
+          updateServicePhone(service.id, data.phone, data.confidence, data.label);
         }
+      } catch (err) {
+        console.error(`Error resolving phone for ${service.name}:`, err);
       }
     });
   }, [nearbyServices, updateServicePhone]);
@@ -89,19 +91,26 @@ const NearbyServices = () => {
               </div>
               <div className="flex gap-3 pt-2">
                 {service.phone ? (
-                  <a 
-                    href={`tel:${service.phone}`} 
-                    className="flex-1 flex items-center justify-center gap-1 border-2 border-outline-variant/50 text-on-surface hover:bg-surface-container-high rounded-full h-[48px] font-label-md text-[13px] transition-colors overflow-hidden px-2 whitespace-nowrap" 
-                    title={service.phone}
-                    onClick={(e) => {
-                      if (!window.confirm(`Call ${service.name} at ${service.phone}?`)) {
-                        e.preventDefault();
-                      }
-                    }}
-                  >
-                    <span className="material-symbols-outlined text-[18px]">call</span>
-                    <span className="truncate">{service.phone}</span>
-                  </a>
+                  <div className="flex-1 flex flex-col gap-1">
+                    <a 
+                      href={`tel:${service.phone}`} 
+                      className="flex-1 flex items-center justify-center gap-1 border-2 border-outline-variant/50 text-on-surface hover:bg-surface-container-high rounded-full h-[48px] font-label-md text-[13px] transition-colors overflow-hidden px-2 whitespace-nowrap" 
+                      title={service.phone}
+                      onClick={(e) => {
+                        if (!window.confirm(`Call ${service.name} at ${service.phone}?`)) {
+                          e.preventDefault();
+                        }
+                      }}
+                    >
+                      <span className="material-symbols-outlined text-[18px]">call</span>
+                      <span className="truncate">{service.phone}</span>
+                    </a>
+                    {service.phoneLabel === 'Regional Helpline' && (
+                      <span className="text-center text-[10px] text-secondary opacity-70 font-label-sm leading-none">
+                        Regional Helpline
+                      </span>
+                    )}
+                  </div>
                 ) : (
                   <div className="flex-1 flex items-center justify-center gap-2 border-2 border-outline-variant/30 text-secondary bg-surface-container-lowest rounded-full h-[48px] font-label-md text-[13px] opacity-70 cursor-not-allowed text-center px-1">
                     <span className="material-symbols-outlined text-[16px]">phone_disabled</span>

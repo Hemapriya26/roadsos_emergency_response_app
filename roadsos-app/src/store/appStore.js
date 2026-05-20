@@ -36,8 +36,8 @@ const useAppStore = create(
       // Nearby Services Cache
       nearbyServices: [],
       setNearbyServices: (services) => set({ nearbyServices: services, lastServicesFetch: Date.now() }),
-      updateServicePhone: (id, phone) => set((state) => ({
-        nearbyServices: state.nearbyServices.map(s => s.id === id ? { ...s, phone } : s)
+      updateServicePhone: (id, phone, confidence = null, label = null) => set((state) => ({
+        nearbyServices: state.nearbyServices.map(s => s.id === id ? { ...s, phone, phoneConfidence: confidence, phoneLabel: label } : s)
       })),
       lastServicesFetch: null,
 

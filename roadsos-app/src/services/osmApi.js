@@ -53,20 +53,26 @@ export const fetchNearbyServices = async (lat, lng, radiusRadius = 5000) => {
             : 'Police';
         const name = el.tags.name || `Unnamed ${type === 'Tow' ? 'Tow Service' : type.substring(0, type.length-1)}`;
         
-        let rawPhone = el.tags?.phone || el.tags?.['contact:phone'] || el.tags?.['contact:mobile'] || el.tags?.['emergency:phone'];
+        // Priority order: contact:phone (most authoritative in OSM) > phone > contact:mobile > emergency:phone
+        let rawPhone = el.tags?.['contact:phone'] || el.tags?.phone || el.tags?.['contact:mobile'] || el.tags?.['emergency:phone'];
         let phone = null;
+        let phoneConfidence = null;
+        let phoneLabel = null;
+
         if (rawPhone) {
           // Normalize phone number format
-          phone = String(rawPhone).replace(/[^\d\+\-\(\)\s]/g, '').replace(/\s+/g, ' ').trim();
-          if (!phone) phone = null;
+          const normalized = String(rawPhone).replace(/[^\d\+\-\(\)\s]/g, '').replace(/\s+/g, ' ').trim();
+          if (normalized && normalized.length >= 7) {
+            phone = normalized;
+            phoneConfidence = 'high'; // OSM official tag = high confidence
+            console.log(`[osmApi] High-confidence OSM phone for ${name}: ${phone}`);
+          }
         }
 
-        if (phone) {
-          console.log(`[osmApi] Extracted phone for ${name}: ${phone}`);
-        } else {
-          console.log(`[osmApi] Phone number unavailable for ${name}`);
+        if (!phone) {
+          console.log(`[osmApi] No OSM phone for ${name} — will resolve via scraper`);
         }
-        
+
         return {
           id: el.id || index,
           name,
@@ -76,6 +82,8 @@ export const fetchNearbyServices = async (lat, lng, radiusRadius = 5000) => {
           lng: elementLon,
           distance: calculateDistance(lat, lng, elementLat, elementLon) + ' km',
           phone,
+          phoneConfidence,
+          phoneLabel,
           website: el.tags?.website || el.tags?.['contact:website'] || el.tags?.url || null,
           icon: type === 'Hospitals' ? 'local_hospital' : type === 'Tow' ? 'car_repair' : 'local_police',
           color: type === 'Hospitals' 
