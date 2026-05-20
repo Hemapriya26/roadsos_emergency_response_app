@@ -15,7 +15,7 @@ const NearbyServices = () => {
     nearbyServices.forEach(async (service) => {
       if (!service.phone) {
         try {
-          const res = await fetch(`/api/fetch-phone?name=${encodeURIComponent(service.name)}&website=${encodeURIComponent(service.website || '')}`);
+          const res = await fetch(`/.netlify/functions/fetch-phone?name=${encodeURIComponent(service.name)}&website=${encodeURIComponent(service.website || '')}`);
           const data = await res.json();
           if (data && data.phone) {
             updateServicePhone(service.id, data.phone);

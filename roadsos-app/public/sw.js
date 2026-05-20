@@ -45,6 +45,7 @@ self.addEventListener('fetch', (event) => {
     requestUrl.hostname.includes('firebase') || 
     requestUrl.hostname.includes('googleapis') || 
     requestUrl.pathname.includes('/api/fetch-phone') ||
+    requestUrl.pathname.includes('/.netlify/functions/fetch-phone') ||
     requestUrl.hostname.includes('tile.openstreetmap.org') ||
     event.request.method !== 'GET';
 

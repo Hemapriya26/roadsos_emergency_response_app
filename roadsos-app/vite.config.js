@@ -18,6 +18,10 @@ const CHENNAI_PHONE_REGISTRY = {
   "george town police station": "+91 44 2345 2584"
 };
 
+// In-memory cache for resolved phone numbers in development
+const localPhoneCache = {};
+const LOCAL_CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes TTL
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -26,15 +30,26 @@ export default defineConfig({
       name: 'phone-scraper-api',
       configureServer(server) {
         server.middlewares.use(async (req, res, next) => {
-          if (req.url.startsWith('/api/fetch-phone')) {
+          if (req.url.startsWith('/api/fetch-phone') || req.url.startsWith('/.netlify/functions/fetch-phone')) {
             res.setHeader('Content-Type', 'application/json');
+            res.setHeader('Access-Control-Allow-Origin', '*');
             
             try {
               const urlObj = new URL(req.url, `http://${req.headers.host}`);
               const name = urlObj.searchParams.get('name') || '';
               const website = urlObj.searchParams.get('website') || '';
               
-              console.log(`[Scraper API] Requested scrape for: "${name}" (website: ${website})`);
+              const cacheKey = `${name.toLowerCase().trim()}_${website.toLowerCase().trim()}`;
+              const now = Date.now();
+              
+              if (localPhoneCache[cacheKey] && localPhoneCache[cacheKey].expiresAt > now) {
+                console.log(`[Local Cache Hit] Serving cached number for key "${cacheKey}": ${localPhoneCache[cacheKey].phone}`);
+                res.statusCode = 200;
+                res.end(JSON.stringify({ success: true, name, phone: localPhoneCache[cacheKey].phone, cached: true }));
+                return;
+              }
+              
+              console.log(`[Local Scraper API] Requested scrape for: "${name}" (website: ${website})`);
               
               let phone = null;
               
@@ -54,18 +69,18 @@ export default defineConfig({
                   const telMatch = html.match(/href=["']tel:([^"']+)["']/i);
                   if (telMatch) {
                     phone = telMatch[1].trim();
-                    console.log(`[Scraper API] Scraped tel link from website: ${phone}`);
+                    console.log(`[Local Scraper API] Scraped tel link from website: ${phone}`);
                   } else {
                     // Try pattern matching for Indian phone numbers
                     const phoneRegex = /(?:\+91\s?\d{10})|(?:\b044[-.\s]?\d{8}\b)|(?:\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b)/;
                     const textMatch = html.match(phoneRegex);
                     if (textMatch) {
                       phone = textMatch[0];
-                      console.log(`[Scraper API] Scraped pattern match from website: ${phone}`);
+                      console.log(`[Local Scraper API] Scraped pattern match from website: ${phone}`);
                     }
                   }
                 } catch (err) {
-                  console.log(`[Scraper API] Direct website scrape failed: ${err.message}`);
+                  console.log(`[Local Scraper API] Direct website scrape failed: ${err.message}`);
                 }
               }
               
@@ -77,7 +92,7 @@ export default defineConfig({
                 for (const key of Object.keys(CHENNAI_PHONE_REGISTRY)) {
                   if (normName.includes(key) || key.includes(normName)) {
                     phone = CHENNAI_PHONE_REGISTRY[key];
-                    console.log(`[Scraper API] Resolved name via regional registry: ${phone}`);
+                    console.log(`[Local Scraper API] Resolved name via regional registry: ${phone}`);
                     break;
                   }
                 }
@@ -93,14 +108,21 @@ export default defineConfig({
                 } else {
                   phone = "+91 98400 12345"; // General Road Rescue Helpline
                 }
-                console.log(`[Scraper API] Fallback helper assigned number: ${phone}`);
+                console.log(`[Local Scraper API] Fallback helper assigned number: ${phone}`);
               }
               
+              // Store resolved number in local cache
+              localPhoneCache[cacheKey] = {
+                phone,
+                expiresAt: Date.now() + LOCAL_CACHE_TTL_MS
+              };
+              console.log(`[Local Cache Store] Cached number for key "${cacheKey}" for 5 minutes`);
+              
               res.statusCode = 200;
-              res.end(JSON.stringify({ success: true, name, phone }));
+              res.end(JSON.stringify({ success: true, name, phone, cached: false }));
               return;
             } catch (err) {
-              console.error(`[Scraper API] Server error:`, err);
+              console.error(`[Local Scraper API] Server error:`, err);
               res.statusCode = 500;
               res.end(JSON.stringify({ error: err.message }));
               return;
