@@ -183,7 +183,7 @@ ROADSoS
 
 Installation & Setup
 Clone Repository
-git clone https://github.com/Hemapriya26/stitch_roadsos_emergency_response_app.git
+git clone https://github.com/Hemapriya26/roadsos_emergency_response_app.git
 
 cd roadsos-app
 
