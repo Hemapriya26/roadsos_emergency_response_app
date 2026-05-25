@@ -155,7 +155,7 @@ Service Workers
 Web Manifest
 
 ## Project Architecture
-
+```
 ROADSoS
 │
 ├── Frontend (React + Vite)
@@ -180,7 +180,7 @@ ROADSoS
     ├── Live Location Sharing
     ├── Phone Resolution
     └── Offline Support
-
+```
 Installation & Setup
 Clone Repository
 git clone https://github.com/Hemapriya26/roadsos_emergency_response_app.git
