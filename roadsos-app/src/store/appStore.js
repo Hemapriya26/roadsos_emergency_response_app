@@ -102,6 +102,25 @@ const useAppStore = create(
         }
       },
 
+      updateContact: async (updatedContact) => {
+        // Update local state first for immediate UI feedback
+        set((state) => ({
+          contacts: state.contacts.map(c =>
+            c.id === updatedContact.id ? { ...c, ...updatedContact } : c
+          )
+        }));
+        
+        // Attempt to sync to Firestore
+        try {
+          if (auth?.currentUser && db) {
+            const uid = auth.currentUser.uid;
+            await setDoc(doc(db, `users/${uid}/contacts`, updatedContact.id), updatedContact);
+          }
+        } catch (error) {
+          console.warn("Failed to update contact in Firebase. Updated locally.", error);
+        }
+      },
+
       removeContact: async (id) => {
         // Update local state first
         set((state) => ({ contacts: state.contacts.filter(c => c.id !== id) }));
