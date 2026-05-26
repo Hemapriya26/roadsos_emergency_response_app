@@ -7,21 +7,32 @@ import ErrorBoundary from './components/ErrorBoundary.jsx';
 
 console.log("[Startup] App startup reached.");
 
-// Register Service Worker (Temporarily isolated/disabled for production debugging)
-console.log("[Startup] Service worker registration is temporarily disabled for isolation.");
-/*
+// Register Service Worker for PWA
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then((registration) => {
         console.log('[Service Worker] Registered successfully with scope:', registration.scope);
+        
+        // Force update check on load to clear stale routes
+        registration.update();
+        
+        // Handle updates
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              console.log('[Service Worker] New version available! Reloading...');
+              // Optional: You could show a UI prompt here instead of forcing reload
+            }
+          });
+        });
       })
       .catch((error) => {
         console.error('[Service Worker] Registration failed:', error);
       });
   });
 }
-*/
 
 // Capture PWA Installation prompt event safely
 window.addEventListener('beforeinstallprompt', (e) => {
